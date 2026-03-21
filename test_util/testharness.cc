@@ -13,11 +13,13 @@
 #include <string>
 #include <thread>
 
+#ifdef OS_WIN
+#include <windows.h>
+#endif
+
 namespace ROCKSDB_NAMESPACE::test {
 
 #ifdef OS_WIN
-#include <windows.h>
-
 std::string GetPidStr() { return std::to_string(GetCurrentProcessId()); }
 #else
 std::string GetPidStr() { return std::to_string(getpid()); }
